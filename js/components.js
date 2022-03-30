@@ -13,14 +13,16 @@ const loaderImage = `
 
 const playerScreen = (playerId, nickname, isActive, round, global) => `
 <article class="player-screen player-screen-game-started" id="player-${playerId}-screen">
-    <h2>${nickname}${isActive ? `<span class="active-player-icon" id="player-${playerId}-active">🔵<span>` : ''}</h2>
-    <div class="round-score-wrapper" id="score-round">
-        <div class="p-8">ROUND</div>
-        <div class="font-bold p-8" id="player-${playerId}-round">${round}</div>
-    </div>
-    <div class="flex flex-col justify-between items-center m-16 p-16 rounded bg-black border text-xl" id="score-global">
-        <div class="p-8">GLOBAL</div>
-        <div class="font-bold p-8" id="player-${playerId}-global">${global}</div>
+    <h2 class="player-title">${nickname}${isActive ? `<span class="active-player-icon" id="player-${playerId}-active">🔵<span>` : ''}</h2>
+    <div class="player-scores-wrapper">
+        <div class="round-score-wrapper" id="score-round">
+            <div class="p-8">ROUND</div>
+            <div class="font-bold p-8" id="player-${playerId}-round">${round}</div>
+        </div>
+        <div class="flex flex-col justify-between items-center m-16 p-16 rounded bg-black border text-xl" id="score-global">
+            <div class="p-8">GLOBAL</div>
+            <div class="font-bold p-8" id="player-${playerId}-global">${global}</div>
+        </div>
     </div>
 </article>
 `;
