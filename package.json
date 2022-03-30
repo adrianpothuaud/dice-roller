@@ -1,0 +1,23 @@
+{
+  "name": "js-dynamic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/adrianpothuaud/dice-roller.git",
+  "author": "adrianpothuaud <adrianpothuaud@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "live-server",
+    "lint": "eslint . --color --ext .js",
+    "lint:fix": "eslint . --color --ext .js --fix",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test start:dev http://localhost:8080 cypress",
+    "e2e:headless": "start-server-and-test start:dev http://localhost:8080 cypress:headless"
+  },
+  "devDependencies": {
+    "cypress": "^9.5.3",
+    "eslint": "^8.12.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "live-server": "^1.2.1"
+  }
+}
