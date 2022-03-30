@@ -18,5 +18,7 @@ module.exports = {
   ],
   'rules': {
     'max-len': 'off',
+    'no-unused-vars': 'off',
+    'require-jsdoc': 'off',
   },
 };

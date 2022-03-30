@@ -6,11 +6,11 @@ const playerSetupScreen = (playerId) => `
         <input id="player-${playerId}-nickname" name="player-${playerId}-nickname" type="text" />
     </div>
 </article>
-`
+`;
 
 const loaderImage = `
 <img alt="Loading dice animation" id="dice-roll-gif" src="/assets/dice-roll.gif" />
-`
+`;
 
 const playerScreen = (playerId, nickname, isActive, round, global) => `
 <article class="player-screen" id="player-${playerId}-screen">
@@ -26,7 +26,7 @@ const playerScreen = (playerId, nickname, isActive, round, global) => `
         </div>
     </div>
 </article>
-`
+`;
 
 const gameScreen = `
 <article class="game-screen" id="game-screen">
@@ -35,7 +35,7 @@ const gameScreen = `
     <button id="roll-dice">Roll Dice</button>
     <button id="hold">Hold</button>
 </article>
-`
+`;
 
 const switchPlayerNotification = (playerIdBefore, playerIdAfter) => `
 <aside id="notifications-area">
@@ -43,7 +43,7 @@ const switchPlayerNotification = (playerIdBefore, playerIdAfter) => `
         <p class="font-bold text-xl">Player ${playerIdBefore}, please let Player ${playerIdAfter} play now.</p>
     </article>
 </aside>
-`
+`;
 
 const endOfGamePopup = (winnerId, winnerNickname, looserId, looserNickname) => `
 <aside id="popup-area">
@@ -55,4 +55,4 @@ const endOfGamePopup = (winnerId, winnerNickname, looserId, looserNickname) => `
         </div>
     </article>
 </aside>
-`
+`;

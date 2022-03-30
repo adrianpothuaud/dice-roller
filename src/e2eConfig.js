@@ -1,3 +1,3 @@
 const _CONFIG = {
-    TESTING_WITH_CYPRESS: true
-}
+  TESTING_WITH_CYPRESS: true,
+};
