@@ -1,15 +1,15 @@
 const animateDiceRoll = () => {
     const tl = anime.timeline({
-        easing: 'easeOutExpo',
-        duration: 500
+        easing: 'linear',
+        duration: 250
     });
     tl.add({
         targets: '#current-dice',
-        rotate: '359deg',
+        rotateY: '360deg',
     });
     tl.add({
         targets: '#current-dice',
-        rotate: '0'
+        rotateY: '0',
     });
 }
 

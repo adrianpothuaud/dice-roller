@@ -40,29 +40,31 @@ const handleGameEvents = () => {
     })
     $("#roll-dice").click(() => {
         $("#roll-dice").prop('disabled', true)
-        game.dice.roll()
-        $("#current-dice").attr("src", game.dice.getImage())
         animateDiceRoll()
-        if(game.dice.face === 1) {
-            setTimeout(() => {
-                if (game.activePlayer === 1) game.player1.score.round = 0
-                else game.player2.score.round = 0
-                game.activePlayer = game.activePlayer === 1 ? 2 : 1
-                reRenderGameStarted(game)
-            }, 500)
-        }
-        else {
-            if (game.activePlayer === 1) {
-                const player1roundBefore = game.player1.score.round
-                game.player1.score.round += game.dice.face
-                animatePlayerRoundScore(1, player1roundBefore, game.player1.score.round)
-            } else {
-                const player2roundBefore = game.player2.score.round
-                game.player2.score.round += game.dice.face
-                animatePlayerRoundScore(2, player2roundBefore, game.player2.score.round)
+        game.dice.roll()
+        setTimeout(() => {
+            $("#current-dice").attr("src", game.dice.getImage())
+            if(game.dice.face === 1) {
+                setTimeout(() => {
+                    if (game.activePlayer === 1) game.player1.score.round = 0
+                    else game.player2.score.round = 0
+                    game.activePlayer = game.activePlayer === 1 ? 2 : 1
+                    reRenderGameStarted(game)
+                }, 500)
             }
-            $("#roll-dice").prop('disabled', false)
-        }
+            else {
+                if (game.activePlayer === 1) {
+                    const player1roundBefore = game.player1.score.round
+                    game.player1.score.round += game.dice.face
+                    animatePlayerRoundScore(1, player1roundBefore, game.player1.score.round)
+                } else {
+                    const player2roundBefore = game.player2.score.round
+                    game.player2.score.round += game.dice.face
+                    animatePlayerRoundScore(2, player2roundBefore, game.player2.score.round)
+                }
+                $("#roll-dice").prop('disabled', false)
+            }
+        }, 500)
     })
     $("#hold").click(() => {
         let timeout
