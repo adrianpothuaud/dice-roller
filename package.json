@@ -6,14 +6,15 @@
   "author": "adrianpothuaud <adrianpothuaud@protonmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node start.js",
-    "start:e2e": "node e2eStart.js",
+    "before:e2e": "mv index.html index_backup.html && mv e2eIndex.html index.html",
+    "start:e2e": "node start.js",
     "lint": "eslint . --color --ext .js",
     "lint:fix": "eslint . --color --ext .js --fix",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start:e2e http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test start:e2e http://localhost:3000 cypress:headless"
+    "e2e:headless": "start-server-and-test start:e2e http://localhost:3000 cypress:headless",
+    "after:e2e": "mv index.html e2eIndex.html && mv index_backup.html index.html"
   },
   "devDependencies": {
     "cypress": "^9.5.3",
@@ -22,5 +23,6 @@
     "eslint-plugin-cypress": "^2.12.1",
     "live-server": "^1.2.1",
     "start-server-and-test": "^1.14.0"
-  }
+  },
+  "dependencies": {}
 }

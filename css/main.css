@@ -4,11 +4,11 @@ html, body {
 }
 
 * {
-    font-family: "Comic Sans MS", "serif";
+    font-family: 'Lato', sans-serif;
 }
 
 body {
-    background: url(/assets/two-tone-bg.webp) no-repeat center center fixed;
+    background: url(/assets/images/two-tone-bg.webp) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -29,8 +29,21 @@ button {
     padding: 8px;
     margin: 4px;
     width: calc(100% - 16px);
+    font-size: 1.1rem;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.icon-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-button span {
+    width: 100%;
+    text-align: center;
 }
 
 input {
@@ -64,6 +77,12 @@ main {
     z-index: 2;
 }
 
+.active-player-icon {
+    margin-left: 8px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
 .game-screen {
     display: flex;
     flex-direction: column;
@@ -79,7 +98,7 @@ main {
 }
 
 #notifications-area {
-    position: fixed;
+    position: absolute;
 
     top: 0;
     bottom: 0;
@@ -110,7 +129,7 @@ main {
 
     font-weight: bold;
 
-    z-index: 5;
+    z-index: 10;
 }
 
 #popup-area {
@@ -147,4 +166,104 @@ main {
     font-weight: bold;
 
     z-index: 5;
+}
+
+@media screen and (max-width: 768px) {
+    button {
+        padding: 4px;
+        margin: 2px;
+        width: calc(100% - 8px);
+        font-size: 1rem;
+    }
+
+    body {
+        background: url(/assets/images/two-tone-bg-inversed.png) no-repeat center center fixed;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    #dice-roll-gif {
+        height: 80px;
+        width: auto;
+    }
+
+    .player-screen {
+        padding: 16px;
+        width: calc(100% - 32px);
+    }
+
+    .player-screen-game-started {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        padding: 8px;
+
+        width: calc(100% - 16px);
+        min-height: auto;
+    }
+
+    .round-score-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 4px;
+        padding: 4px;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    button {
+        padding: 8px;
+        margin: 4px;
+        width: calc(100% - 16px);
+        font-size: 1.1rem;
+    }
+
+    body {
+        background: url(/assets/images/two-tone-bg.webp) no-repeat center center fixed;
+    }
+
+    main {
+        flex-direction: row;
+    }
+
+    #dice-roll-gif {
+        height: auto;
+        width: auto;
+    }
+
+    .player-screen {
+        padding: 32px;
+        width: auto;
+    }
+
+    .player-screen-game-started {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 32px;
+
+        width: 25vw;
+        min-height: 30vh;
+    }
+
+    .round-score-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 16px;
+        padding: 16px;
+        border-radius: 16px;
+        font-size: 1.2rem;
+    }
 }

@@ -25,9 +25,11 @@ jobs:
           node-version: 16.x
       # Run yarn
       - run: yarn
+      - run: yarn before:e2e
       # Run E2E Test
       - run: yarn e2e:headless
       # Deploy to Netlify using our dev secrets
+      - run: yarn after:e2e
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
         env:
