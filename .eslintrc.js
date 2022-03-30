@@ -17,5 +17,6 @@ module.exports = {
     'cypress',
   ],
   'rules': {
+    'max-len': 'off',
   },
 };

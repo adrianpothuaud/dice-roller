@@ -124,7 +124,7 @@ const handleEndOfGame = (winnerId, winnerNickname, looserId, looserNickname) => 
 jQuery(() => {
     handleGameSetup()
 
-    if (JSON.parse(process.env.TESTING_WITH_CYPRESS)) {
+    if (_CONFIG.TESTING_WITH_CYPRESS) {
         document.game = game
         document.handleGameSetup = handleGameSetup
         document.handleGameStart = handleGameStart
