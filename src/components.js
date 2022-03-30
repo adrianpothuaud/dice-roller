@@ -37,8 +37,16 @@ const gameScreen = `
 </article>
 `
 
-const endOfGameNotification = (winnerId, winnerNickname, looserId, looserNickname) => `
+const switchPlayerNotification = (playerIdBefore, playerIdAfter) => `
 <aside id="notifications-area">
+    <article class="notification">
+        <p class="font-bold text-xl">Player ${playerIdBefore}, please let Player ${playerIdAfter} play now.</p>
+    </article>
+</aside>
+`
+
+const endOfGamePopup = (winnerId, winnerNickname, looserId, looserNickname) => `
+<aside id="popup-area">
     <article class="end-game">
         <p class="font-bold text-xl">Congratulations to Player ${winnerId} (${winnerNickname}) who won!!!</p>
         <p class="font-bold text-xl">Player ${looserId} (${looserNickname}) is a looser!!!</p>
