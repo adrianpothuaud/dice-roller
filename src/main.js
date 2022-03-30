@@ -65,6 +65,7 @@ const handleGameEvents = () => {
     })
     $("#hold").click(() => {
         let timeout
+        let endOfGame = false
         if (game.activePlayer === 1) {
             const globalBefore = game.player1.score.global
             game.player1.score.global += game.player1.score.round
@@ -73,7 +74,10 @@ const handleGameEvents = () => {
             game.player1.score.round = 0
             animatePlayerRoundScore(1, roundBefore, game.player1.score.round)
             timeout = 100 * Math.max(Math.abs(globalBefore - game.player1.score.global), Math.abs(roundBefore - game.player1.score.round))
-            if (game.player1.score.global >= 100) handleEndOfGame(1, game.player1.nickname, 2, game.player2.nickname)
+            if (game.player1.score.global >= 100) {
+                endOfGame = true
+                handleEndOfGame(1, game.player1.nickname, 2, game.player2.nickname)
+            }
         } else {
             const globalBefore = game.player2.score.global
             game.player2.score.global += game.player2.score.round
@@ -82,9 +86,12 @@ const handleGameEvents = () => {
             game.player2.score.round = 0
             animatePlayerRoundScore(2, roundBefore, game.player2.score.round)
             timeout = 100 * Math.max(Math.abs(globalBefore - game.player2.score.global), Math.abs(roundBefore - game.player2.score.round))
-            if (game.player2.score.global >= 100) handleEndOfGame(2, game.player2.nickname, 1, game.player1.nickname)
+            if (game.player2.score.global >= 100) {
+                endOfGame = true
+                handleEndOfGame(2, game.player2.nickname, 1, game.player1.nickname)
+            }
         }
-        handlePlayerSwitch(timeout)
+        if (!endOfGame) handlePlayerSwitch(timeout)
     })
 }
 
@@ -109,10 +116,21 @@ const handleEndOfGame = (winnerId, winnerNickname, looserId, looserNickname) => 
         $("#player-1-screen").remove()
         $("#game-screen").remove()
         $("#player-2-screen").remove()
+        $("#popup-area").remove()
         handleGameSetup()
     })
 }
 
 jQuery(() => {
     handleGameSetup()
+
+    if (JSON.parse(process.env.TESTING_WITH_CYPRESS)) {
+        document.game = game
+        document.handleGameSetup = handleGameSetup
+        document.handleGameStart = handleGameStart
+        document.handleGameEvents = handleGameEvents
+        document.handlePlayerSwitch = handlePlayerSwitch
+        document.handleEndOfGame = handleEndOfGame
+        document.reRenderGameStarted = reRenderGameStarted
+    }
 })
