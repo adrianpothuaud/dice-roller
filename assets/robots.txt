@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elegant-dango-3cc75a.netlify.app/sitemap.xml

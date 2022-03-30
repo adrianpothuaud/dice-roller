@@ -3,6 +3,7 @@ const playerSetupScreen = (playerId) => `
     <div class="flex flex-col justify-center items-center">
         <h2>Player ${playerId}</h2>
         <p class="font-bold text-center">Type your nickname below<br/>and press 'ENTER'</p>
+        <label class="hidden" for="player-${playerId}-nickname">nickname</label>
         <input id="player-${playerId}-nickname" name="player-${playerId}-nickname" type="text" />
     </div>
 </article>
