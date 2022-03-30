@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://elegant-dango-3cc75a.netlify.app/sitemap.xml
+Sitemap: https://studi-dice-roller.netlify.app/sitemap.xml
