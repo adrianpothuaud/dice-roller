@@ -1,5 +1,5 @@
 # Name of workflow
-name: Pull Requests Workflow
+name: Push Workflow
 
 # When workflow is triggered
 on:
