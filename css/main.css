@@ -1,0 +1,109 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    font-family: "Comic Sans MS", "serif";
+}
+
+body {
+    background: url(/assets/two-tone-bg.webp) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px;
+    margin: 4px;
+    width: calc(100% - 16px);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+input {
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 8px;
+    width: calc(100% - 16px);
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+}
+
+.player-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 32px;
+
+    width: 25vw;
+    min-height: 30vh;
+}
+
+.game-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 32px;
+
+    width: 240px;
+    min-height: 30vh;
+}
+
+#notifications-area {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.end-game {
+    padding: 10vw;
+
+    background-color: #8bc495;
+    color: black;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+
+    z-index: 5;
+}

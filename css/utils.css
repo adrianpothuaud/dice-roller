@@ -1,0 +1,75 @@
+.bg-black {
+    background-color: black;
+    color: white;
+}
+
+.border {
+    border: 2px black solid;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.hidden {
+    content: "";
+    display: none;
+    height: 0;
+    width: 0;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.m-16 {
+    margin: 16px;
+}
+
+.mt-32 {
+    margin-top: 32px;
+}
+
+.p-8 {
+    padding: 8px;
+}
+
+.p-16 {
+    padding: 16px;
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-xl {
+    font-size: 1.2rem;
+}
+
+.w-300 {
+    width: 300px;
+}
