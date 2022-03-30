@@ -45,12 +45,9 @@ const handleGameEvents = () => {
         setTimeout(() => {
             $("#current-dice").attr("src", game.dice.getImage())
             if(game.dice.face === 1) {
-                setTimeout(() => {
-                    if (game.activePlayer === 1) game.player1.score.round = 0
-                    else game.player2.score.round = 0
-                    game.activePlayer = game.activePlayer === 1 ? 2 : 1
-                    reRenderGameStarted(game)
-                }, 500)
+                if (game.activePlayer === 1) game.player1.score.round = 0
+                else game.player2.score.round = 0
+                handlePlayerSwitch()
             }
             else {
                 if (game.activePlayer === 1) {
@@ -77,7 +74,6 @@ const handleGameEvents = () => {
             animatePlayerRoundScore(1, roundBefore, game.player1.score.round)
             timeout = 100 * Math.max(Math.abs(globalBefore - game.player1.score.global), Math.abs(roundBefore - game.player1.score.round))
             if (game.player1.score.global >= 100) handleEndOfGame(1, game.player1.nickname, 2, game.player2.nickname)
-            else game.activePlayer = 2
         } else {
             const globalBefore = game.player2.score.global
             game.player2.score.global += game.player2.score.round
@@ -87,16 +83,27 @@ const handleGameEvents = () => {
             animatePlayerRoundScore(2, roundBefore, game.player2.score.round)
             timeout = 100 * Math.max(Math.abs(globalBefore - game.player2.score.global), Math.abs(roundBefore - game.player2.score.round))
             if (game.player2.score.global >= 100) handleEndOfGame(2, game.player2.nickname, 1, game.player1.nickname)
-            else game.activePlayer = 1
         }
-        setTimeout(() => {
-            reRenderGameStarted(game)
-        }, timeout)
+        handlePlayerSwitch(timeout)
     })
 }
 
+const handlePlayerSwitch = (timeout = 500) => {
+    const playerSwitchNotifComponent = switchPlayerNotification(game.activePlayer, game.activePlayer === 1 ? 2 : 1)
+    $("#other").append(playerSwitchNotifComponent)
+
+    setTimeout(() => {
+        $("#notifications-area").remove()
+    }, 2000)
+
+    setTimeout(() => {
+        game.activePlayer = game.activePlayer === 1 ? 2 : 1
+        reRenderGameStarted(game)
+    }, timeout)
+}
+
 const handleEndOfGame = (winnerId, winnerNickname, looserId, looserNickname) => {
-    const endOfGameComponent = endOfGameNotification(winnerId, winnerNickname, looserId, looserNickname)
+    const endOfGameComponent = endOfGamePopup(winnerId, winnerNickname, looserId, looserNickname)
     $("#other").append(endOfGameComponent)
     $("#new-game-2").click(() => {
         $("#player-1-screen").remove()
