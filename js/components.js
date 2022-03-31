@@ -27,7 +27,7 @@ const playerScreen = (playerId, nickname, isActive, round, global) => `
 </article>
 `;
 
-const gameScreen = (diceImgSrc) => `
+const gameScreen = (diceImgSrc, diceFace) => `
 <article class="game-screen" id="game-screen">
     <button class="icon-button" id="new-game">
         <img alt="New Game Icon" height="28" src="/assets/images/plus-icon.png" width="28" />
@@ -38,7 +38,7 @@ const gameScreen = (diceImgSrc) => `
         <img alt="Roll Dice Icon" height="28" src="/assets/images/reload-icon.png" width="28" />
         <span>Roll Dice</span>
     </button>
-    <button class="icon-button" id="hold">
+    <button class="icon-button" ${diceFace === 0 ? 'disabled' : ''} id="hold">
         <img alt="Hold score Icon" height="28" src="/assets/images/save-icon.png" width="28" />
         <span>Hold</span>
     </button>
