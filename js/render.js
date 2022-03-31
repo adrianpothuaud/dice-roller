@@ -11,7 +11,7 @@ const renderGameSetup = () => {
 
 const renderGameStart = (game) => {
   const playerScreen1Component = playerScreen(1, game.player1.nickname, game.activePlayer === 1, game.player1.score.round, game.player1.score.global);
-  const gameScreenComponent = gameScreen;
+  const gameScreenComponent = gameScreen(game.dice.getImage());
   const playerScreen2Component = playerScreen(2, game.player2.nickname, game.activePlayer === 2, game.player2.score.round, game.player2.score.global);
 
   $('#game-board')
@@ -26,7 +26,7 @@ const reRenderGameStarted = (game) => {
   $('#player-2-screen').remove();
 
   const playerScreen1Component = playerScreen(1, game.player1.nickname, game.activePlayer === 1, game.player1.score.round, game.player1.score.global);
-  const gameScreenComponent = gameScreen;
+  const gameScreenComponent = gameScreen(game.dice.getImage());
   const playerScreen2Component = playerScreen(2, game.player2.nickname, game.activePlayer === 2, game.player2.score.round, game.player2.score.global);
 
   $('#game-board')

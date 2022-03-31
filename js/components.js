@@ -1,23 +1,21 @@
 const playerSetupScreen = (playerId) => `
 <article class="player-screen" id="player-${playerId}-screen">
-    <div class="flex flex-col justify-center items-center">
-        <h2>Player ${playerId}</h2>
-        <p class="font-bold text-center">Type your nickname below<br/>and press 'ENTER'</p>
-        <label class="hidden" for="player-${playerId}-nickname">nickname</label>
-        <input id="player-${playerId}-nickname" name="player-${playerId}-nickname" type="text" />
-    </div>
+    <h2>Player ${playerId}</h2>
+    <p class="font-bold text-center">Type your nickname below<br/>and press 'ENTER'</p>
+    <label class="hidden" for="player-${playerId}-nickname">nickname</label>
+    <input id="player-${playerId}-nickname" name="player-${playerId}-nickname" type="text" />
 </article>
 `;
 
 const loaderImage = `
-<img alt="Loading dice animation" id="dice-roll-gif" src="/assets/dice-roll.gif" />
+<img alt="Loading dice animation" id="dice-roll-gif" src="/assets/images/dice-roll.gif" />
 `;
 
 const playerScreen = (playerId, nickname, isActive, round, global) => `
-<article class="player-screen" id="player-${playerId}-screen">
-    <div class="flex flex-col justify-around items-center">
-        <h2>${nickname}${isActive ? '&nbsp;🔵' : ''}</h2>
-        <div class="flex flex-col justify-between items-center m-16 p-16 rounded" id="score-round">
+<article class="player-screen player-screen-game-started" id="player-${playerId}-screen">
+    <h2 class="player-title">${nickname}${isActive ? `<span class="active-player-icon" id="player-${playerId}-active">🔵<span>` : ''}</h2>
+    <div class="player-scores-wrapper">
+        <div class="round-score-wrapper" id="score-round">
             <div class="p-8">ROUND</div>
             <div class="font-bold p-8" id="player-${playerId}-round">${round}</div>
         </div>
@@ -29,12 +27,21 @@ const playerScreen = (playerId, nickname, isActive, round, global) => `
 </article>
 `;
 
-const gameScreen = `
+const gameScreen = (diceImgSrc) => `
 <article class="game-screen" id="game-screen">
-    <button id="new-game">New Game</button>
-    <img alt="Dice image" id="current-dice" height="108" src="/assets/dice-target.png" width="108" />
-    <button id="roll-dice">Roll Dice</button>
-    <button id="hold">Hold</button>
+    <button class="icon-button" id="new-game">
+        <img alt="New Game Icon" height="28" src="/assets/images/plus-icon.png" width="28" />
+        <span>New Game</span>
+    </button>
+    <img alt="Dice image" id="current-dice" height="108" src="${diceImgSrc}" width="108" />
+    <button class="icon-button" id="roll-dice">
+        <img alt="Roll Dice Icon" height="28" src="/assets/images/reload-icon.png" width="28" />
+        <span>Roll Dice</span>
+    </button>
+    <button class="icon-button" id="hold">
+        <img alt="Hold score Icon" height="28" src="/assets/images/save-icon.png" width="28" />
+        <span>Hold</span>
+    </button>
 </article>
 `;
 

@@ -25,8 +25,15 @@ jobs:
           node-version: 16.x
       # Run yarn
       - run: yarn
+      - run: yarn before:e2e
       # Run E2E Test
       - run: yarn e2e:headless
+      - run: yarn after:e2e
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: "test-results.xml"
       # Deploy to Netlify using our dev secrets
       - name: Deploy to netlify
         uses: netlify/actions/cli@master

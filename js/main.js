@@ -42,25 +42,7 @@ const handleGameEvents = () => {
     $('#roll-dice').prop('disabled', true);
     animateDiceRoll();
     game.dice.roll();
-    setTimeout(() => {
-      $('#current-dice').attr('src', game.dice.getImage());
-      if (game.dice.face === 1) {
-        if (game.activePlayer === 1) game.player1.score.round = 0;
-        else game.player2.score.round = 0;
-        handlePlayerSwitch();
-      } else {
-        if (game.activePlayer === 1) {
-          const player1roundBefore = game.player1.score.round;
-          game.player1.score.round += game.dice.face;
-          animatePlayerRoundScore(1, player1roundBefore, game.player1.score.round);
-        } else {
-          const player2roundBefore = game.player2.score.round;
-          game.player2.score.round += game.dice.face;
-          animatePlayerRoundScore(2, player2roundBefore, game.player2.score.round);
-        }
-        $('#roll-dice').prop('disabled', false);
-      }
-    }, 500);
+    handleDiceRolled();
   });
   $('#hold').click(() => {
     let timeout;
@@ -94,6 +76,28 @@ const handleGameEvents = () => {
   });
 };
 
+const handleDiceRolled = () => {
+  setTimeout(() => {
+    $('#current-dice').attr('src', game.dice.getImage());
+    if (game.dice.face === 1) {
+      if (game.activePlayer === 1) game.player1.score.round = 0;
+      else game.player2.score.round = 0;
+      handlePlayerSwitch();
+    } else {
+      if (game.activePlayer === 1) {
+        const player1roundBefore = game.player1.score.round;
+        game.player1.score.round += game.dice.face;
+        animatePlayerRoundScore(1, player1roundBefore, game.player1.score.round);
+      } else {
+        const player2roundBefore = game.player2.score.round;
+        game.player2.score.round += game.dice.face;
+        animatePlayerRoundScore(2, player2roundBefore, game.player2.score.round);
+      }
+      $('#roll-dice').prop('disabled', false);
+    }
+  }, 500);
+};
+
 const handlePlayerSwitch = (timeout = 500) => {
   const playerSwitchNotifComponent = switchPlayerNotification(game.activePlayer, game.activePlayer === 1 ? 2 : 1);
   $('#other').append(playerSwitchNotifComponent);
@@ -104,6 +108,7 @@ const handlePlayerSwitch = (timeout = 500) => {
 
   setTimeout(() => {
     game.activePlayer = game.activePlayer === 1 ? 2 : 1;
+    game.dice.face = 0;
     reRenderGameStarted(game);
   }, timeout);
 };
@@ -128,8 +133,10 @@ jQuery(() => {
     document.handleGameSetup = handleGameSetup;
     document.handleGameStart = handleGameStart;
     document.handleGameEvents = handleGameEvents;
+    document.handleDiceRolled = handleDiceRolled;
     document.handlePlayerSwitch = handlePlayerSwitch;
     document.handleEndOfGame = handleEndOfGame;
+    document.Player = Player;
     document.reRenderGameStarted = reRenderGameStarted;
   }
 });
