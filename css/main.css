@@ -34,11 +34,25 @@ button {
     text-transform: uppercase;
 }
 
+button:disabled {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    opacity: 0.75;
+}
+
+button:disabled img {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 .icon-button {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.icon-button img {
+    border-radius: 100%;
 }
 
 .icon-button span {
