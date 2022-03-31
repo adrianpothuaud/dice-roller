@@ -11,7 +11,7 @@
     "lint": "eslint . --color --ext .js",
     "lint:fix": "eslint . --color --ext .js --fix",
     "cypress": "cypress open",
-    "cypress:headless": "cypress run",
+    "cypress:headless": "cypress run --reporter junit",
     "e2e": "start-server-and-test start:e2e http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test start:e2e http://localhost:3000 cypress:headless",
     "after:e2e": "mv index.html e2eIndex.html && mv index_backup.html index.html"

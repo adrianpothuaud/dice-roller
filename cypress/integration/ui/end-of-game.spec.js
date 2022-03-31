@@ -4,7 +4,7 @@ describe('UI - End of Game', () => {
     cy.get('input#player-1-nickname').type('foo').type('{ENTER}');
     cy.get('input#player-2-nickname').type('bar').type('{ENTER}');
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(500);
+    cy.wait(2000);
     cy.document().then((document) => {
       document.game.player1.score.round = 0;
       document.game.player1.score.global = 94;
@@ -15,10 +15,10 @@ describe('UI - End of Game', () => {
       document.reRenderGameStarted(document.game);
     });
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(500);
+    cy.wait(2000);
     cy.get('#hold').click();
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(500);
+    cy.wait(2000);
   });
   it('Show end of game popup', () =>{
     cy.get('article.end-game').should('be.visible');

@@ -1,9 +1,10 @@
 const liveServer = require('live-server');
 
 const params = {
-  port: 3000,
-  open: false,
   logLevel: 2,
+  open: false,
+  port: 3000,
+  watch: ['./js/', './index.html'],
 };
 
 liveServer.start(params);

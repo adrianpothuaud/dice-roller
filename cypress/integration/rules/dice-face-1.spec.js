@@ -4,7 +4,7 @@ describe('Rule - Dice is rolled and face is 1', () => {
     cy.get('input#player-1-nickname').type('foo').type('{ENTER}');
     cy.get('input#player-2-nickname').type('bar').type('{ENTER}');
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(500);
+    cy.wait(2000);
     cy.document().then((document) => {
       document.game.player1.score.round = 0;
       document.game.player1.score.global = 94;
@@ -15,7 +15,7 @@ describe('Rule - Dice is rolled and face is 1', () => {
       document.reRenderGameStarted(document.game);
     });
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(500);
+    cy.wait(2000);
   });
   it('Player switch notification is toggled', () => {
     cy.get('#notifications-area .notification p').should('be.visible')
