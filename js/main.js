@@ -19,11 +19,16 @@ const handleGameSetup = () => {
         if (game.player1 === undefined) $('#player-1-nickname').focus();
         else handleGameStart();
       });
+  // add difficulty change event listener
+  $('#choose-difficulty')
+      .change((e) => {
+        game.difficulty = e.target.value;
+      });
 };
 
 const handleGameStart = () => {
   $('#player-1-screen').remove();
-  $('#dice-roll-gif').remove();
+  $('#setup-middle-bloc').remove();
   $('#player-2-screen').remove();
   game.dice = new Dice();
   renderGameStart(game);
@@ -55,7 +60,7 @@ const handleGameEvents = () => {
       game.player1.score.round = 0;
       animatePlayerRoundScore(1, roundBefore, game.player1.score.round);
       timeout = 100 * Math.max(Math.abs(globalBefore - game.player1.score.global), Math.abs(roundBefore - game.player1.score.round));
-      if (game.player1.score.global >= 100) {
+      if (game.player1.score.global >= (game.difficulty === 'normal' ? 100 : 50)) {
         endOfGame = true;
         handleEndOfGame(1, game.player1.nickname, 2, game.player2.nickname);
       }
@@ -67,7 +72,7 @@ const handleGameEvents = () => {
       game.player2.score.round = 0;
       animatePlayerRoundScore(2, roundBefore, game.player2.score.round);
       timeout = 100 * Math.max(Math.abs(globalBefore - game.player2.score.global), Math.abs(roundBefore - game.player2.score.round));
-      if (game.player2.score.global >= 100) {
+      if (game.player2.score.global >= (game.difficulty === 'normal' ? 100 : 50)) {
         endOfGame = true;
         handleEndOfGame(2, game.player2.nickname, 1, game.player1.nickname);
       }
@@ -84,6 +89,7 @@ const handleDiceRolled = () => {
       else game.player2.score.round = 0;
       handlePlayerSwitch();
     } else {
+      $('#hold').prop('disabled', false);
       if (game.activePlayer === 1) {
         const player1roundBefore = game.player1.score.round;
         game.player1.score.round += game.dice.face;

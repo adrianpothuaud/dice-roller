@@ -11,6 +11,23 @@ const loaderImage = `
 <img alt="Loading dice animation" id="dice-roll-gif" src="/assets/images/dice-roll.gif" />
 `;
 
+const difficultyBloc = `
+<div class="flex flex-row justify-center items-center mt-8 w-full">
+    <label class="mr-8">Difficulty</label>
+    <select id="choose-difficulty">
+        <option id="choose-difficulty-option-easy" value="easy">Easy</option>
+        <option id="choose-difficulty-option-normal" selected="selected" value="normal">Normal</option>
+    </select>
+</div>
+`;
+
+const setupScreenMiddleBloc = `
+<div class="flex flex-col justify-center items-center" id="setup-middle-bloc">
+    ${loaderImage}
+    ${difficultyBloc}
+</div>
+`;
+
 const playerScreen = (playerId, nickname, isActive, round, global) => `
 <article class="player-screen player-screen-game-started" id="player-${playerId}-screen">
     <h2 class="player-title">${nickname}${isActive ? `<span class="active-player-icon" id="player-${playerId}-active">🔵<span>` : ''}</h2>

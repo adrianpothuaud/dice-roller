@@ -1,4 +1,4 @@
-describe('Game UI - On Player name selection', () => {
+describe('Game UI - On Player names and difficulty selection', () => {
   before(() => {
     cy.visit('/');
   });
@@ -11,5 +11,10 @@ describe('Game UI - On Player name selection', () => {
   });
   it('And focus is on player 1 nickname field', () => {
     cy.get('input#player-1-nickname').should('be.focused');
+  });
+  it('And players have to choose a difficulty between easy and normal', () => {
+    cy.get('#choose-difficulty').should('be.visible');
+    cy.get('#choose-difficulty').select('easy');
+    cy.get('#choose-difficulty').select('normal');
   });
 });
